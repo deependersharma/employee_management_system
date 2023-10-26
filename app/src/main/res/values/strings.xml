@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">App_main</string>
+    <string name="I_am_an_employee_btn">I am an employee</string>
+    <string name="I_am_a_manager_btn">I am a manager</string>
+    <string name="home_page_title">Reduce the workloads of HR Management</string>
+    <string name="HomePage_image_description">Employee Image Icon</string>
+    <string name="Employee_login_title">Employee Login</string>
+    <string name="Employee_email">Employee Email</string>
+    <string name="Employee_access_Token">Access Token</string>
+    <string name="Login_btn">Login</string>
+    <string name="Manager_login_title">Manager Login</string>
+    <string name="Manager_email">Manager Email</string>
+    <string name="Manager_password">Password</string>
+</resources>
