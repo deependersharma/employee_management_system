@@ -50,7 +50,7 @@
         android:layout_width="316dp"
         android:layout_height="71dp"
         android:layout_marginTop="36dp"
-        android:text="@string/I_am_a_manager_btn"
+        android:text="Manager"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button"
