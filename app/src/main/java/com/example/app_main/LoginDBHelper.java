@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -20,7 +21,7 @@ public class LoginDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, user_id TEXT, image BLOB NOT NULL,joining_date TEXT NOT NULL, department TEXT, hourly_rate TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, user_id TEXT UNIQUE, image BLOB NOT NULL,joining_date TEXT NOT NULL, department TEXT, hourly_rate TEXT)");
     }
 
     @Override
@@ -65,34 +66,65 @@ public class LoginDBHelper extends SQLiteOpenHelper {
         }
     }
     public ArrayList<Employees_Model> readData() {
-        // Step 1: on below line we are opening the
-        // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Employees_Model> employeeModelArrayList = new ArrayList<>();
+        System.out.println("hello");
 
-        //  Step2: A Cursor in Android is an interface for accessing and retrieving data
-        //  from a database query result. In this case, it will be used to store the result of the SQL query.
-        //Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + NAME_COL + "=?", new String[]{courseName});
-        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        //The second parameter is an array of strings that can be
-        // used to replace placeholders in the SQL query with actual values
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
-        // on below line we are creating a new array list.
-        ArrayList<Employees_Model> Employee_ModalArrayList = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                employeeModelArrayList.add(new Employees_Model(
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getBlob(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6)
+                ));
 
-        while(cursorCourses.moveToNext()) {
-            // on below line we are adding the data from cursor to our array list.
-            Employee_ModalArrayList.add(new Employees_Model(cursorCourses.getString(1),
-                    cursorCourses.getString(2),
-                    cursorCourses.getBlob(3),
-                    cursorCourses.getString(4),
-                    cursorCourses.getString(5),
-                    cursorCourses.getString(6)));
+            }
+            System.out.println(employeeModelArrayList);
+            cursor.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("readData", "Error fetching data from the database: " + e.getMessage());
         }
-        System.out.println(Employee_ModalArrayList);
-        // at last closing our cursor
-        // and returning our array list.
-        cursorCourses.close();
 
-        return Employee_ModalArrayList;
+        Log.d("readData", "Fetched data: " + employeeModelArrayList);
+        return employeeModelArrayList;
+    }
+    public void updateEmployee(String originalUserid, String id, String userName, byte[] image,
+                             String joining_date, String department, String rate) {
+
+        // calling a method to get writable database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values
+        // along with its key and value pair.
+        values.put("user_id", id);
+        values.put("username",userName);
+        values.put("image", image);
+        values.put("joining_date", joining_date);
+        values.put("department", department);
+        values.put("hourly_rate", rate);
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our course which is stored in original name variable.
+        db.update(TABLE_NAME, values, "user_id=?", new String[]{originalUserid});
+        db.close();
+    }
+    public void deleteEmployee(String id) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete our
+        // course and we are comparing it with our course name.
+
+        db.delete(TABLE_NAME, "user_id=?", new String[]{id});
+        db.close();
     }
 }

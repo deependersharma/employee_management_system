@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 public class Manager_menu extends AppCompatActivity {
    TextView greet;
-   LinearLayout add_employee, edit_employee;
+   LinearLayout add_employee, edit_employee, delete_employee;
    TextView time_date;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -28,6 +29,7 @@ public class Manager_menu extends AppCompatActivity {
         time_date =findViewById(R.id.time_date);
         add_employee= findViewById(R.id.add_employee);
         edit_employee=findViewById(R.id.edit_employee);
+        delete_employee= findViewById(R.id.delete_employee);
         //Get the time of day
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
@@ -66,10 +68,18 @@ add_employee.setOnClickListener(new View.OnClickListener() {
  startActivity(i);
     }
 });
-edit_employee.setOnClickListener(new View.OnClickListener() {
+
+            edit_employee.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(Manager_menu.this, Edit_employee.class);
+                    startActivity(i);
+                }
+            });
+delete_employee.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        Intent i=new Intent(Manager_menu.this, Edit_employee.class);
+        Intent i=new Intent(Manager_menu.this, delete_Employee.class);
         startActivity(i);
     }
 });

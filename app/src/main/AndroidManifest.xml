@@ -13,6 +13,12 @@
         android:theme="@style/Theme.App_main"
         tools:targetApi="31">
         <activity
+            android:name=".delete_Employee"
+            android:exported="false" />
+        <activity
+            android:name=".updateEmployee"
+            android:exported="false" />
+        <activity
             android:name=".Edit_employee"
             android:exported="false" />
         <activity

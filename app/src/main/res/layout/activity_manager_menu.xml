@@ -126,6 +126,7 @@
             android:layout_marginLeft="25dp"
             android:background="@drawable/layout_bg"
             android:orientation="vertical"
+            android:clickable="true"
             android:padding="10dp">
 
             <ImageView

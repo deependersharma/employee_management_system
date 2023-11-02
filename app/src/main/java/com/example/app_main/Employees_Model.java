@@ -8,19 +8,26 @@ public class Employees_Model {
     private String id;
 
     private byte[] image;
-    public Employees_Model(String id,
-                       String name,byte[] image,
+    public Employees_Model(
+                       String name,String id,byte[] image,String joining_date,
                        String role,
-                       String hourly_rate, String joining_date)
+                       String hourly_rate)
     {
-        this.name = name;
         this.id = id;
+        this.name = name;
         this.image=image;
         this.hourly_rate = hourly_rate;
         this.role = role;
+        this.joining_date=joining_date;
     }
 
     // creating getter and setter methods
+
+
+    public byte[] getImage() {
+        return image;
+    }
+
     public String getEmployeeName() { return name; }
 
     public void setEmployeeName(String name)
@@ -55,6 +62,8 @@ public class Employees_Model {
     {
         this.hourly_rate =hourly_rate;
     }
+
+    public String getJoining_date(){ return joining_date; }
 
 
     // constructor
