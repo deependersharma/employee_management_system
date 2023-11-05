@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 public class Manager_menu extends AppCompatActivity {
    TextView greet;
-   LinearLayout add_employee, edit_employee, delete_employee;
+   ImageButton add_employee, edit_employee, delete_employee;
    TextView time_date;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

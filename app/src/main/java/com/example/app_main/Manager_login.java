@@ -18,17 +18,20 @@ public class Manager_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_login);
-        email= findViewById(R.id.editTextTextEmailAddress);
-        pass= findViewById(R.id.editTextTextPassword);
+        email= findViewById(R.id.editTextEmailAddress);
+        pass= findViewById(R.id.editTextPassword);
         login= findViewById(R.id.Manager_login);
         dbHelper= new ManagerDBHelper(this);
+
+        email.setText("gagi");
+        pass.setText("123");
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String emailId= email.getText().toString();
                 String password= pass.getText().toString();
                 boolean login_check= dbHelper.CheckLogin(emailId, password);
-                if(login_check==true){
+                if(login_check){
                     Toast.makeText(getApplicationContext(), "login successful",Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(Manager_login.this, Manager_menu.class);
                     i.putExtra("ManagerIdentifier",emailId);

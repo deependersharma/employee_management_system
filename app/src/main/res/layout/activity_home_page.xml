@@ -4,59 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homePage">
+    tools:context=".homePage"
+    android:background="@color/screen_background">
 
     <ImageView
         android:id="@+id/imageView3"
+        android:layout_width="418dp"
+        android:layout_height="327dp"
+        android:layout_marginTop="56dp"
         android:contentDescription="@string/HomePage_image_description"
-        android:layout_width="313dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recruitment" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="324dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/I_am_an_employee_btn"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:srcCompat="@drawable/homepage_image" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="318dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="64dp"
+        android:id="@+id/homepage_title"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:text="@string/home_page_title"
-        android:textAlignment="center"
-        android:textColor="#253553"
+        android:textAlignment="viewStart"
+        android:textColor="@color/dark_blue"
         android:textColorHint="#2944A1"
-        android:textSize="30sp"
+        android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="316dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="36dp"
-        android:text="Manager"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/montserrat_medium"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="@string/I_am_a_manager_btn"
+        android:textColor="@color/text_secondary"
         android:textSize="24sp"
+        app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.443"
-        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@color/blue_primary"
+        app:strokeWidth="3dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/blue_primary"
+        android:fontFamily="@font/montserrat_medium"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="@string/I_am_an_employee_btn"
+        android:textSize="24sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

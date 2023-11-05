@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,21 @@ public EditRVAdapter(ArrayList<Employees_Model> model, Context context)
     holder.textView.setText(model1.getEmployeeName());
         Bitmap bitmap = BitmapFactory.decodeByteArray(model1.getImage(), 0, model1.getImage().length);
     holder.imageView.setImageBitmap(bitmap);
+byte[] imageByteArray= model1.getImage();
+        // Convert the byte array to a Bitmap
+        Bitmap originalBitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+
+// Define the compression format and quality (0-100, where 0 means compress for small size and 100 means compress for maximum quality).
+        int compressionQuality = 50; // Adjust the compression quality as needed
+
+// Create a ByteArrayOutputStream to store the compressed image
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+// Compress the Bitmap to the ByteArrayOutputStream
+        originalBitmap.compress(Bitmap.CompressFormat.JPEG, compressionQuality, byteArrayOutputStream);
+
+// Get the compressed byte array from the ByteArrayOutputStream
+        byte[] compressedByteArray = byteArrayOutputStream.toByteArray();
         // below line is to add on click listener for our recycler view item.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +68,7 @@ public EditRVAdapter(ArrayList<Employees_Model> model, Context context)
                 // below we are passing all our values.
                 i.putExtra("id", model1.getEmployeeId());
                 i.putExtra("name", model1.getEmployeeName());
-                i.putExtra("image", model1.getImage());
+                i.putExtra("image", compressedByteArray);
                 i.putExtra("role", model1.getEmployeeRole());
                 i.putExtra("joining_date", model1.getJoining_date());
                 i.putExtra("hourly_rate", model1.getHourly_rate());

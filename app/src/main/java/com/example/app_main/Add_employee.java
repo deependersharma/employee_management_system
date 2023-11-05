@@ -42,11 +42,11 @@ public class Add_employee extends AppCompatActivity {
         // register the UI widgets with their appropriate IDs
         image_picker = findViewById(R.id.image_picker);
         date_picker= findViewById(R.id.date_picker);
-        add_employee= findViewById(R.id.add_employee);
-        id=findViewById(R.id.editTextText);
-        username=findViewById(R.id.editTextText2);
-        role=findViewById(R.id.employee_role_edittext);
-        hourly_rate=findViewById(R.id.editTextText4);
+        add_employee= findViewById(R.id.btn_add_employee);
+        id=findViewById(R.id.employee_id);
+        username=findViewById(R.id.employee_name);
+        role=findViewById(R.id.employee_role);
+        hourly_rate=findViewById(R.id.employee_salary);
 
         dbHelper = new LoginDBHelper(this);
         date_picker.setOnClickListener(new View.OnClickListener() {

@@ -2,13 +2,32 @@
     <string name="app_name">App_main</string>
     <string name="I_am_an_employee_btn">I am an employee</string>
     <string name="I_am_a_manager_btn">I am a manager</string>
-    <string name="home_page_title">Reduce the workloads of HR Management</string>
+    <string name="home_page_title">Reduce the workloads of HR management</string>
     <string name="HomePage_image_description">Employee Image Icon</string>
+
     <string name="Employee_login_title">Employee Login</string>
     <string name="Employee_email">Employee Email</string>
     <string name="Employee_access_Token">Access Token</string>
+
     <string name="Login_btn">Login</string>
+
     <string name="Manager_login_title">Manager Login</string>
-    <string name="Manager_email">Manager Email</string>
+    <string name="Manager_email">Admin Email</string>
     <string name="Manager_password">Password</string>
+
+    <string name="button_add_employee">Add\nEmployee</string>
+    <string name="button_edit_employee">Edit\nEmployee</string>
+    <string name="button_delete_employee">Delete\nEmployee</string>
+    <string name="button_send_a_message">Send a\nmessage</string>
+    <string name="button_employee_lookup">Employee\nLookup</string>
+    <string name="button_assign_videos">Assign\nTraining\nVideos</string>
+    <string name="button_generate_payslips">Generate\nPayslips</string>
+    <string name="button_submit">Submit</string>
+
+    <string name="menu_heading_1">Manage Employee</string>
+    <string name="menu_heading_2">Quick Actions</string>
+    <string name="menu_heading_3">Reports</string>
+
+    <string name="page_title_add_employee">Add an Employee</string>
+
 </resources>
