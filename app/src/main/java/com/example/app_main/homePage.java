@@ -3,6 +3,7 @@ package com.example.app_main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,27 @@ public class homePage extends AppCompatActivity {
         btn_manager= findViewById(R.id.button2);
         DBHelper= new LoginDBHelper(this);
         db= new ManagerDBHelper(this);
+
+        //shared preference
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            // Navigate to the dashboard
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }// Optional: Finish the current activity to prevent going back
+//        } else {
+//            // Show the login screen
+//            Intent intent = new Intent(this, .class);
+//            startActivity(intent);
+//            finish();  // Optional: Finish the current activity to prevent going back
+//        }
+
+
+
         btn_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

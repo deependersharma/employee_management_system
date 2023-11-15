@@ -3,6 +3,7 @@ package com.example.app_main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 public class Employee_login extends AppCompatActivity {
     EditText email, pass;
     Button login;
+    public static final String Name = "nameKey";
     LoginDBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,8 @@ public class Employee_login extends AppCompatActivity {
         pass= findViewById(R.id.editTextTextPassword);
         login= findViewById(R.id.employee_login);
         dbHelper= new LoginDBHelper(this);
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +32,11 @@ public class Employee_login extends AppCompatActivity {
                 String password= pass.getText().toString();
                 boolean login_check= dbHelper.CheckLogin(emailId, password);
                 if(login_check==true){
+                    SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+
+                    editor.putString("stringValueKey", emailId);
+                    editor.apply();
                     Toast.makeText(getApplicationContext(), "login successful",Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(Employee_login.this, MainActivity.class);
                     i.putExtra("employeeIdentifier",emailId);

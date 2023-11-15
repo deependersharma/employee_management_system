@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".Sending_Message"
+            android:exported="false" />
+        <activity
             android:name=".delete_Employee"
             android:exported="false" />
         <activity

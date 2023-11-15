@@ -86,4 +86,11 @@ delete_employee.setOnClickListener(new View.OnClickListener() {
 });
         }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(this, Manager_login.class);
+        startActivity(i);
+
     }
+}

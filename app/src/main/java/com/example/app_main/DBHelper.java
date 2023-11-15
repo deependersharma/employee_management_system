@@ -6,9 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,30 +35,81 @@ private SQLiteDatabase database;
         String DATABASE_CREATE = "create table "
                 + TABLE_WORKTIME + "("
                 + COLUMN_ID + " integer primary key autoincrement, "
-                + COLUMN_USER_ID + " text NOT NULL, "
-                + COLUMN_CLOCK_IN + " text NOT NULL, "
-                + COLUMN_CLOCK_OUT + " text NOT NULL, "
+                + COLUMN_USER_ID + " text, "
+                + COLUMN_CLOCK_IN + " text, "
+                + COLUMN_CLOCK_OUT + " text, "
                 + COLUMN_BREAK_IN + " text, "
                 + COLUMN_BREAK_OUT + " text, "
                 + COLUMN_TOTAL_HOURS + " text);";
         database.execSQL(DATABASE_CREATE);
     }
     //data insertion in database
-    public void insertWorkTime(Date clockIn, Date clockOut, Date breakIn, Date breakOut, String totalHours, String user_name) {
-        ContentValues values = new ContentValues();
+    public long insertWorkTime(Date clockIn, Date clockOut, Date breakIn, Date breakOut, String totalHours, String user_name) {
+        long rowId = -1;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        values.put(COLUMN_USER_ID,(user_name!=null) ? user_name : null);
-        values.put(COLUMN_CLOCK_IN, (clockIn != null) ? sdf.format(clockIn) : null);
-        values.put(COLUMN_CLOCK_OUT, (clockOut != null) ? sdf.format(clockOut) : null);
-        values.put(COLUMN_BREAK_IN, (breakIn != null) ? sdf.format(breakIn) : null);
-        values.put(COLUMN_BREAK_OUT, (breakOut != null) ? sdf.format(breakOut) : null);
-        values.put(COLUMN_TOTAL_HOURS, totalHours);
+        try (SQLiteDatabase db = getWritableDatabase()) {
+            ContentValues values = new ContentValues();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            values.put(COLUMN_USER_ID, (user_name != null) ? user_name : null);
+            values.put(COLUMN_CLOCK_IN, (clockIn != null) ? sdf.format(clockIn) : null);
+            values.put(COLUMN_CLOCK_OUT, (clockOut != null) ? sdf.format(clockOut) : null);
+            values.put(COLUMN_BREAK_IN, (breakIn != null) ? sdf.format(breakIn) : null);
+            values.put(COLUMN_BREAK_OUT, (breakOut != null) ? sdf.format(breakOut) : null);
+            values.put(COLUMN_TOTAL_HOURS, totalHours);
 
-        database.insert(TABLE_WORKTIME, null, values);
-        database.close();
+            rowId = db.insert(TABLE_WORKTIME, null, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return rowId;
     }
+
+    public void updateBreakInTime(long rowId, Date breakInTime) {
+        if (!database.isOpen()) {
+            database = getWritableDatabase(); // Reopen the database if closed
+        }
+        ContentValues values = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        values.put(COLUMN_BREAK_IN, (breakInTime != null) ? sdf.format(breakInTime) : null);
+
+        String whereClause = COLUMN_ID + "=?";
+        String[] whereArgs = {String.valueOf(rowId)};
+
+        database.update(TABLE_WORKTIME, values, whereClause, whereArgs);
+    }
+
+    // Update break out time
+    public void updateBreakOutTime(long rowId, Date breakOutTime) {
+        if (!database.isOpen()) {
+            database = getWritableDatabase(); // Reopen the database if closed
+        }
+        ContentValues values = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        values.put(COLUMN_BREAK_OUT, (breakOutTime != null) ? sdf.format(breakOutTime) : null);
+
+        String whereClause = COLUMN_ID + "=?";
+        String[] whereArgs = {String.valueOf(rowId)};
+
+        database.update(TABLE_WORKTIME, values, whereClause, whereArgs);
+    }
+
+    // Update clock out time
+    public void updateClockOutTime(long rowId, Date clockOutTime, String totalHours) {
+        if (!database.isOpen()) {
+            database = getWritableDatabase(); // Reopen the database if closed
+        }
+        ContentValues values = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        values.put(COLUMN_TOTAL_HOURS, totalHours);
+        values.put(COLUMN_CLOCK_OUT, (clockOutTime != null) ? sdf.format(clockOutTime) : null);
+
+        String whereClause = COLUMN_ID + "=?";
+        String[] whereArgs = {String.valueOf(rowId)};
+
+        database.update(TABLE_WORKTIME, values, whereClause, whereArgs);
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
