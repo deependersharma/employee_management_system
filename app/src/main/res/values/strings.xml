@@ -29,5 +29,6 @@
     <string name="menu_heading_3">Reports</string>
 
     <string name="page_title_add_employee">Add an Employee</string>
+    <string name="page_title_edit_employee">Edit an Employee</string>
 
 </resources>

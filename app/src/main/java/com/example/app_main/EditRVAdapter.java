@@ -57,6 +57,8 @@ byte[] imageByteArray= model1.getImage();
 
 // Get the compressed byte array from the ByteArrayOutputStream
         byte[] compressedByteArray = byteArrayOutputStream.toByteArray();
+
+
         // below line is to add on click listener for our recycler view item.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

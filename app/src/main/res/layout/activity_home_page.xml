@@ -13,9 +13,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="418dp"
+        android:layout_width="match_parent"
         android:layout_height="327dp"
         android:layout_marginTop="44dp"
+        android:src="@drawable/homepage_background_image"
         android:contentDescription="@string/HomePage_image_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
