@@ -13,34 +13,34 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".Sending_Message"
+            android:name=".Views.Send_message"
             android:exported="false" />
         <activity
-            android:name=".delete_Employee"
+            android:name=".Views.Delete_employee"
             android:exported="false" />
         <activity
-            android:name=".updateEmployee"
+            android:name=".Views.Update_employee"
             android:exported="false" />
         <activity
-            android:name=".Edit_employee"
+            android:name=".Views.Edit_employee"
             android:exported="false" />
         <activity
-            android:name=".Add_employee"
+            android:name=".Views.Add_employee"
             android:exported="false" />
         <activity
-            android:name=".Manager_menu"
+            android:name=".Views.Manager_menu"
             android:exported="false" />
         <activity
-            android:name=".Manager_login"
+            android:name=".Views.Manager_login"
             android:exported="false" />
         <activity
-            android:name=".Employee_login"
+            android:name=".Views.Employee_login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Views.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".homePage"
+            android:name=".Views.Homepage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.R;
+
 public class Employee_login extends AppCompatActivity {
     EditText email, pass;
     Button login;
     public static final String Name = "nameKey";
-    LoginDBHelper dbHelper;
+    Login_DB_helper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +25,7 @@ public class Employee_login extends AppCompatActivity {
         email= findViewById(R.id.editTextTextEmailAddress);
         pass= findViewById(R.id.editTextTextPassword);
         login= findViewById(R.id.employee_login);
-        dbHelper= new LoginDBHelper(this);
+        dbHelper= new Login_DB_helper(this);
 
 
         login.setOnClickListener(new View.OnClickListener() {

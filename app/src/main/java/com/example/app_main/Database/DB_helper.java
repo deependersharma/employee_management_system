@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Database;
 
 import static android.app.ProgressDialog.show;
 
@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DBHelper extends SQLiteOpenHelper {private static final String DATABASE_NAME = "WorkTimeDB";
+public class DB_helper extends SQLiteOpenHelper {private static final String DATABASE_NAME = "WorkTimeDB";
     private static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_WORKTIME = "WorkTime";
@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {private static final String DATA
 private SQLiteDatabase database;
 
 
-    public DBHelper(Context context) {
+    public DB_helper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
        database = this.getWritableDatabase();
     }

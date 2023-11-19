@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,14 +13,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.app_main.Database.DB_helper;
+import com.example.app_main.R;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.jar.Attributes;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DBHelper dbHelper;
+    private DB_helper dbHelper;
     private Button btnClockIn, btnClockOut, btnTakeBreak, btnResumeWork, btnlogout;
     private TextView user, tvStatus, tvClockInTime, tvBreakInTime, tvBreakOutTime, tvTotalHours ,tvClockOutTime;
     private Date clockInTime=null, clockOutTime=null, breakInTime=null, breakOutTime=null;
@@ -55,7 +56,7 @@ String temp1;
         tvTotalHours = findViewById(R.id.textView2);
         user= findViewById(R.id.userId);
 
-        dbHelper = new DBHelper(this);
+        dbHelper = new DB_helper(this);
         preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         String retrievedValue = preferences.getString("stringValueKey", "DefaultFallbackValue");
@@ -361,7 +362,7 @@ String temp1;
             editor.putBoolean("isclockout", false);
             editor.putBoolean("isbreakended", false);
             editor.apply();
-            Intent i = new Intent(MainActivity.this, homePage.class);
+            Intent i = new Intent(MainActivity.this, Homepage.class);
             startActivity(i);
             finish();
         }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/screen_background"
     android:fillViewport="true"
-    tools:context=".updateEmployee">
+    tools:context=".Views.Update_employee">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -192,7 +192,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:gravity="center_horizontal"
             android:drawableLeft="@drawable/icon_check"
             android:backgroundTint="@color/blue_primary"
             android:fontFamily="@font/montserrat_medium"

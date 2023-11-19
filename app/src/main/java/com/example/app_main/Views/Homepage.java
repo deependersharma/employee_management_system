@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,12 +7,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-public class homePage extends AppCompatActivity {
+import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.Database.Manager_DB_helper;
+import com.example.app_main.R;
+
+public class Homepage extends AppCompatActivity {
     private Button btn_employee, btn_manager;
-    LoginDBHelper DBHelper;
-    ManagerDBHelper db;
+    Login_DB_helper DBHelper;
+    Manager_DB_helper db;
 
 
     @Override
@@ -21,8 +24,8 @@ public class homePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         btn_employee= findViewById(R.id.button);
         btn_manager= findViewById(R.id.button2);
-        DBHelper= new LoginDBHelper(this);
-        db= new ManagerDBHelper(this);
+        DBHelper= new Login_DB_helper(this);
+        db= new Manager_DB_helper(this);
 
         //shared preference
         SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -47,7 +50,7 @@ public class homePage extends AppCompatActivity {
         btn_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(homePage.this, Employee_login.class);
+                Intent i=new Intent(Homepage.this, Employee_login.class);
                 startActivity(i);
             }
         });
@@ -55,7 +58,7 @@ public class homePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //db.Insert("gagi",  "123");
-                Intent i=new Intent(homePage.this, Manager_login.class);
+                Intent i=new Intent(Homepage.this, Manager_login.class);
                 startActivity(i);
 
             }

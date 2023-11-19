@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.R;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -29,7 +30,7 @@ import java.util.Calendar;
 public class Add_employee extends AppCompatActivity {
     ImageView image_picker;
     TextView date_picker;
-    LoginDBHelper dbHelper;
+    Login_DB_helper dbHelper;
     String selectedDate;
     Button add_employee;
     byte[] imageByteArray;
@@ -49,7 +50,7 @@ public class Add_employee extends AppCompatActivity {
         role=findViewById(R.id.employee_role);
         hourly_rate=findViewById(R.id.employee_salary);
 
-        dbHelper = new LoginDBHelper(this);
+        dbHelper = new Login_DB_helper(this);
         date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

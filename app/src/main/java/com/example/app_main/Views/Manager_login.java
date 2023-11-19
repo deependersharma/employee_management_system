@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.app_main.Database.Manager_DB_helper;
+import com.example.app_main.R;
+
 public class Manager_login extends AppCompatActivity {
     private Button login;
     private EditText email, pass;
-    private ManagerDBHelper dbHelper;
+    private Manager_DB_helper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class Manager_login extends AppCompatActivity {
         email = findViewById(R.id.editTextEmailAddress);
         pass = findViewById(R.id.editTextPassword);
         login = findViewById(R.id.Manager_login);
-        dbHelper = new ManagerDBHelper(this);
+        dbHelper = new Manager_DB_helper(this);
 
         email.setText("gagi");
         pass.setText("123");
@@ -47,7 +50,7 @@ public class Manager_login extends AppCompatActivity {
         @Override
         public void onBackPressed() {
             super.onBackPressed();
-            Intent i=new Intent(this, homePage.class);
+            Intent i=new Intent(this, Homepage.class);
             startActivity(i);
 
         }

@@ -28,10 +28,12 @@
     <string name="menu_heading_1">Manage Employee</string>
     <string name="menu_heading_2">Quick Actions</string>
     <string name="menu_heading_3">Reports</string>
+    <string name="heading_select_employee">Select an Employee</string>
 
     <string name="page_title_add_employee">Add an Employee</string>
     <string name="page_title_edit_employee">Edit an Employee</string>
     <string name="page_title_update_employee">Update an Employee</string>
     <string name="page_title_delete_employee">Delete an Employee</string>
+    <string name="page_title_send_message">Send a message</string>
 
 </resources>

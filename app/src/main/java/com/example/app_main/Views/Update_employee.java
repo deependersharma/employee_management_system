@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -20,14 +20,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.R;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
-public class updateEmployee extends AppCompatActivity {
+public class Update_employee extends AppCompatActivity {
     ImageView update_image_picker;
     TextView update_date_picker;
-    LoginDBHelper dbHelper;
+    Login_DB_helper dbHelper;
     String selectedDate;
     Button add_employee;
     byte[] imageByteArray;
@@ -46,7 +49,7 @@ public class updateEmployee extends AppCompatActivity {
         update_role=findViewById(R.id.update_employee_role);
         update_hourly_rate=findViewById(R.id.update_employee_rate);
 
-        dbHelper = new LoginDBHelper(this);
+        dbHelper = new Login_DB_helper(this);
 
         id1 = getIntent().getStringExtra("id");
         username1 = getIntent().getStringExtra("name");
@@ -78,7 +81,7 @@ public class updateEmployee extends AppCompatActivity {
                 // on below line we are creating a variable for date picker dialog.
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         // on below line we are passing context.
-                        updateEmployee.this,
+                        Update_employee.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year,
@@ -112,7 +115,7 @@ public class updateEmployee extends AppCompatActivity {
             public void onClick(View view) {
                 dbHelper.updateEmployee(id1,update_id.getText().toString(),update_username.getText().toString(), imageByteArray, selectedDate  ,update_role.getText().toString(),update_hourly_rate.getText().toString());
                 Toast.makeText(getApplicationContext(),"Employee Added!" ,Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(updateEmployee.this, Edit_employee.class);
+                Intent i=new Intent(Update_employee.this, Edit_employee.class);
                 startActivity(i);
                 finish();
 

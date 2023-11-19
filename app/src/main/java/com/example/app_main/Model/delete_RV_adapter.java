@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Model;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,33 +17,37 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.Views.Manager_menu;
+import com.example.app_main.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class deleteRVAdapter extends RecyclerView.Adapter<deleteRVAdapter.ViewHolder> {
+public class delete_RV_adapter extends RecyclerView.Adapter<delete_RV_adapter.ViewHolder> {
 
     Context context;
-    LoginDBHelper dbHelper;
-    private ArrayList<Employees_Model> model;
+    Login_DB_helper dbHelper;
+    private ArrayList<Employees_model> model;
     private List<Bitmap> imageList;
 
-    public deleteRVAdapter(ArrayList<Employees_Model> model, Context context)
+    public delete_RV_adapter(ArrayList<Employees_model> model, Context context)
     {
         this.context=context;
         this.model=model;
-        dbHelper= new LoginDBHelper(context);
+        dbHelper= new Login_DB_helper(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.edit_employee_items,parent,false);
-        return  new deleteRVAdapter.ViewHolder(v);
+        return  new delete_RV_adapter.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Employees_Model model1= model.get(position);
+        Employees_model model1= model.get(position);
         holder.textView.setText(model1.getEmployeeName());
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(model1.getImage(), 0, model1.getImage().length);

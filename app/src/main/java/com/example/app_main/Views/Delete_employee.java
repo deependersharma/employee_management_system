@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,15 +9,20 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.Model.Employees_model;
+import com.example.app_main.Model.delete_RV_adapter;
+import com.example.app_main.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class delete_Employee extends AppCompatActivity {
+public class Delete_employee extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private ArrayList<Employees_Model> model;
+    private ArrayList<Employees_model> model;
     private List<Bitmap> imageList;
-    private deleteRVAdapter deleteRVAdapter;
-    private LoginDBHelper dbHelper;
+    private delete_RV_adapter deleteRVAdapter;
+    private Login_DB_helper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +30,14 @@ public class delete_Employee extends AppCompatActivity {
         setContentView(R.layout.activity_delete_employee);
         recyclerView= findViewById(R.id.recyclerview);
         model= new ArrayList<>();
-        dbHelper= new LoginDBHelper(delete_Employee.this);
+        dbHelper= new Login_DB_helper(Delete_employee.this);
         model= dbHelper.readData();
-        deleteRVAdapter = new deleteRVAdapter(model, delete_Employee.this);
+        deleteRVAdapter = new delete_RV_adapter(model, Delete_employee.this);
         // setting our adapter to recycler view.
         recyclerView.setAdapter(deleteRVAdapter);
 
         // setting layout manager for our recycler view.
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(delete_Employee.this, RecyclerView.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Delete_employee.this, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         if(deleteRVAdapter.getItemCount()==0){
             Intent i=new Intent(this

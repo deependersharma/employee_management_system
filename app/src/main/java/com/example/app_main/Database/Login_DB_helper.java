@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,15 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
+import com.example.app_main.Model.Employees_model;
 
 import java.util.ArrayList;
 
-public class LoginDBHelper extends SQLiteOpenHelper {
+public class Login_DB_helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "login.db";
     public static final String TABLE_NAME = "user";
 
-    public LoginDBHelper(Context context) {
+    public Login_DB_helper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
@@ -65,16 +65,15 @@ public class LoginDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-    public ArrayList<Employees_Model> readData() {
+    public ArrayList<Employees_model> readData() {
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<Employees_Model> employeeModelArrayList = new ArrayList<>();
-        System.out.println("hello");
+        ArrayList<Employees_model> employeeModelArrayList = new ArrayList<>();
 
         try {
             Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
             while (cursor.moveToNext()) {
-                employeeModelArrayList.add(new Employees_Model(
+                employeeModelArrayList.add(new Employees_model(
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getBlob(3),

@@ -1,6 +1,6 @@
-package com.example.app_main;
+package com.example.app_main.Model;
 
-public class Employees_Model {
+public class Employees_model {
     private String name;
     private String role;
     private String joining_date;
@@ -8,7 +8,7 @@ public class Employees_Model {
     private String id;
 
     private byte[] image;
-    public Employees_Model(
+    public Employees_model(
                        String name,String id,byte[] image,String joining_date,
                        String role,
                        String hourly_rate)

@@ -1,4 +1,4 @@
-package com.example.app_main;
+package com.example.app_main.Model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,15 +13,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app_main.R;
+import com.example.app_main.Views.Update_employee;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class EditRVAdapter extends RecyclerView.Adapter<EditRVAdapter.ViewHolder> {
+public class Edit_RV_adapter extends RecyclerView.Adapter<Edit_RV_adapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Employees_Model> model;
+    private ArrayList<Employees_model> model;
 
-    public EditRVAdapter(ArrayList<Employees_Model> model, Context context) {
+    public Edit_RV_adapter(ArrayList<Employees_model> model, Context context) {
         this.context = context;
         this.model = model;
     }
@@ -35,7 +38,7 @@ public class EditRVAdapter extends RecyclerView.Adapter<EditRVAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Employees_Model model1 = model.get(position);
+        Employees_model model1 = model.get(position);
 
         // Capitalize the first letter of the employee name
         String originalText = model1.getEmployeeName();
@@ -57,7 +60,7 @@ public class EditRVAdapter extends RecyclerView.Adapter<EditRVAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 // Create an intent for the next activity
-                Intent i = new Intent(context, updateEmployee.class);
+                Intent i = new Intent(context, Update_employee.class);
 
                 // Pass values to the intent
                 i.putExtra("id", model1.getEmployeeId());
