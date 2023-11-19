@@ -39,12 +39,12 @@ public class updateEmployee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_employee);
         update_image_picker = findViewById(R.id.image_picker);
-        update_date_picker= findViewById(R.id.date_picker);
-        add_employee= findViewById(R.id.add_employee);
-        update_id=findViewById(R.id.editTextText);
-        update_username=findViewById(R.id.editTextText2);
-        update_role=findViewById(R.id.employee_role_edittext);
-        update_hourly_rate=findViewById(R.id.editTextText4);
+        update_date_picker= findViewById(R.id.update_date);
+        add_employee= findViewById(R.id.btn_update_employee);
+        update_id=findViewById(R.id.update_employee_id);
+        update_username=findViewById(R.id.update_employee_name);
+        update_role=findViewById(R.id.update_employee_role);
+        update_hourly_rate=findViewById(R.id.update_employee_rate);
 
         dbHelper = new LoginDBHelper(this);
 

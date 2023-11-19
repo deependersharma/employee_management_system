@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -96,6 +97,22 @@ public class Add_employee extends AppCompatActivity {
         add_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String employeeId = id.getText().toString().trim();
+                String employeeUsername = username.getText().toString().trim();
+                String employeeRole = role.getText().toString().trim();
+                String employeeHourlyRate = hourly_rate.getText().toString().trim();
+
+                // Check if any of the fields is empty
+                if (employeeId.isEmpty() || employeeUsername.isEmpty() || employeeRole.isEmpty() || employeeHourlyRate.isEmpty() || selectedDate == null || imageByteArray == null) {
+                    Toast.makeText(getApplicationContext(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
+                          return; // Exit the method if any field is empty
+                }
+
+                if (employeeId.length() < 6) {
+                    Toast.makeText(getApplicationContext(), "Employee ID cannot be less than 6 digits", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 dbHelper.Insert(id.getText().toString(),username.getText().toString(), imageByteArray, selectedDate  ,role.getText().toString(),hourly_rate.getText().toString());
                 Toast.makeText(getApplicationContext(),"Employee Added!" ,Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(Add_employee.this, Manager_menu.class);

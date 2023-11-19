@@ -84,9 +84,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="3dp"
             android:text="Choose Date"
-            android:textSize="20sp">
-
-        </TextView>
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 
@@ -120,7 +118,8 @@
             android:fontFamily="@font/montserrat"
             android:inputType="number"
             android:hint="6 Digits &quot;123456&quot;"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:maxLength="6"/>
 
         <TextView
             android:id="@+id/text_emp_name"

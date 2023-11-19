@@ -15,59 +15,51 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
+public class EditRVAdapter extends RecyclerView.Adapter<EditRVAdapter.ViewHolder> {
 
-public class EditRVAdapter extends RecyclerView.Adapter<EditRVAdapter.ViewHolder>{
-
-    Context context;
+    private Context context;
     private ArrayList<Employees_Model> model;
-    private List<Bitmap> imageList;
-public EditRVAdapter(ArrayList<Employees_Model> model, Context context)
-{
-    this.context=context;
-    this.model=model;
-}
+
+    public EditRVAdapter(ArrayList<Employees_Model> model, Context context) {
+        this.context = context;
+        this.model = model;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.edit_employee_items,parent,false);
-        return  new ViewHolder(v);
+        View v = LayoutInflater.from(context).inflate(R.layout.edit_employee_items, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    Employees_Model model1= model.get(position);
-    holder.textView.setText(model1.getEmployeeName());
+        Employees_Model model1 = model.get(position);
+
+        // Capitalize the first letter of the employee name
+        String originalText = model1.getEmployeeName();
+        String capitalizedText = originalText.substring(0, 1).toUpperCase() + originalText.substring(1).toLowerCase();
+        holder.textView.setText(capitalizedText);
+
+        // Set the employee ID
+        holder.textEmployeeId.setText(model1.getEmployeeId());
+
+        // Set the employee image
         Bitmap bitmap = BitmapFactory.decodeByteArray(model1.getImage(), 0, model1.getImage().length);
-    holder.imageView.setImageBitmap(bitmap);
-byte[] imageByteArray= model1.getImage();
-        // Convert the byte array to a Bitmap
-        Bitmap originalBitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+        holder.imageView.setImageBitmap(bitmap);
 
-// Define the compression format and quality (0-100, where 0 means compress for small size and 100 means compress for maximum quality).
-        int compressionQuality = 50; // Adjust the compression quality as needed
+        // Compress the image for passing to the next activity
+        byte[] compressedByteArray = compressBitmap(model1.getImage());
 
-// Create a ByteArrayOutputStream to store the compressed image
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-// Compress the Bitmap to the ByteArrayOutputStream
-        originalBitmap.compress(Bitmap.CompressFormat.JPEG, compressionQuality, byteArrayOutputStream);
-
-// Get the compressed byte array from the ByteArrayOutputStream
-        byte[] compressedByteArray = byteArrayOutputStream.toByteArray();
-
-
-        // below line is to add on click listener for our recycler view item.
+        // Set onClickListener for the RecyclerView item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // on below line we are calling an intent.
+                // Create an intent for the next activity
                 Intent i = new Intent(context, updateEmployee.class);
 
-                // below we are passing all our values.
+                // Pass values to the intent
                 i.putExtra("id", model1.getEmployeeId());
                 i.putExtra("name", model1.getEmployeeName());
                 i.putExtra("image", compressedByteArray);
@@ -75,28 +67,35 @@ byte[] imageByteArray= model1.getImage();
                 i.putExtra("joining_date", model1.getJoining_date());
                 i.putExtra("hourly_rate", model1.getHourly_rate());
 
-                // starting our activity.
+                // Start the activity
                 context.startActivity(i);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-return  model.size();
+        return model.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView textView;
+        TextView textView, textEmployeeId;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView= itemView.findViewById(R.id.image);
-            textView= itemView.findViewById(R.id.text_name);
-
+            textEmployeeId = itemView.findViewById(R.id.text_employee_id_editable);
+            imageView = itemView.findViewById(R.id.image);
+            textView = itemView.findViewById(R.id.text_name);
         }
     }
 
-
+    // Helper method to compress the Bitmap
+    private byte[] compressBitmap(byte[] imageByteArray) {
+        Bitmap originalBitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+        int compressionQuality = 50;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        originalBitmap.compress(Bitmap.CompressFormat.JPEG, compressionQuality, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
 }
