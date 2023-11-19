@@ -4,224 +4,372 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/screen_background"
     tools:context=".Views.MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="379dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/shape1"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bottom_border"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/text_welcome_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/heading_welcome_back"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="38dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clockin"
-                android:textColor="#737070"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/clockin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:text="--:--"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/employee_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="clockout"
-                android:textColor="#737070"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/clockout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:text="--:--"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="breakIn"
-                android:textColor="#737070"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/breakin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:text="--:--"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="breakOut"
-                android:textColor="#737070"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/breakout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:text="--:--"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="38dp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <Button
-            android:id="@+id/btnClockIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Clock In"
-            tools:layout_editor_absoluteX="67dp"
-            tools:layout_editor_absoluteY="304dp" />
-
-        <Button
-            android:id="@+id/btnClockOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Clock Out"
-            tools:layout_editor_absoluteX="226dp"
-            tools:layout_editor_absoluteY="304dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <Button
-            android:id="@+id/btnTakeBreak"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Break In" />
-
-        <Button
-            android:id="@+id/btnResumeWork"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Break Out" />
-
-    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_current_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="68dp"
-        android:text="Live Status"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="@string/heading_current_status"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Total Hours"
-        android:textSize="16sp"
+        android:layout_margin="25dp"
+        android:background="@drawable/employee_current_status_bg"
+        android:elevation="8dp"
+        android:paddingStart="10dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_current_status">
+
+        <TextView
+            android:id="@+id/text_current_status_editable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Current Status shows here" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_employee_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:paddingBottom="15dp"
+            android:baselineAligned="false"
+            android:background="@drawable/bottom_border_no_bg"
+            tools:layout_editor_absoluteX="16dp">
+
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_child_clock_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_clock_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/button_clock_in"
+                    android:src="@drawable/ic_clock" />
+
+                <TextView
+                    android:id="@id/text_clock_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_clock_in"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/subheading_clock_in" />
+
+                <TextView
+                    android:id="@id/text_clock_in_editable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_clock_in"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="--:--" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_child_clock_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_clock_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/button_clock_out"
+                    android:src="@drawable/ic_clock" />
+
+                <TextView
+                    android:id="@id/text_clock_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_clock_out"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/subheading_clock_out" />
+
+                <TextView
+                    android:id="@id/text_clock_out_editable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_clock_out"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="--:--" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_child_break_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_break_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/button_break_start"
+                    android:src="@drawable/ic_break" />
+
+                <TextView
+                    android:id="@id/text_break_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_break_start"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/subheading_break_start" />
+
+                <TextView
+                    android:id="@id/text_break_start_editable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_break_start"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="--:--" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_child_break_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_break_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/button_break_end"
+                    android:src="@drawable/ic_break" />
+
+                <TextView
+                    android:id="@id/text_break_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_break_end"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/subheading_break_end" />
+
+                <TextView
+                    android:id="@id/text_break_end_editable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_break_end"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="--:--" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_hours_worked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_layout_employee_status"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/text_hours_worked" />
+
+        <TextView
+            android:id="@+id/text_total_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_layout_employee_status"
+            android:layout_alignRight="@+id/text_hours_worked"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="-68dp"
+            android:fontFamily="@font/montserrat"/>
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/userId"
+        android:id="@+id/text_quick_actions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textAlignment="textEnd"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="@string/heading_quick_actions"
         android:textSize="20sp"
-        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout4" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/text_quick_actions">
+
+        <LinearLayout
+            android:id="@+id/linear_layout_btn_grp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_clock_in"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_primary"
+                android:drawableLeft="@drawable/ic_clock_white"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/button_clock_in"
+                android:textSize="16sp"
+                app:cornerRadius="4dp" />
+
+            <Button
+                android:id="@+id/btn_break_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_primary"
+                android:drawableLeft="@drawable/ic_break_white"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/button_break_start"
+                android:textSize="16sp"
+                app:cornerRadius="4dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_layout_btn_grp_1"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_clock_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_primary"
+                android:drawableLeft="@drawable/ic_clock_white"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/button_clock_out"
+                android:textSize="16sp"
+                app:cornerRadius="4dp" />
+
+            <Button
+                android:id="@+id/btn_break_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_primary"
+                android:drawableLeft="@drawable/ic_break_white"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/button_break_end"
+                android:textSize="16sp"
+                app:cornerRadius="4dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <Button
-        android:id="@+id/logout_btn"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="68dp"
-        android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        android:id="@+id/btn_employee_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="78dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/danger"
+        android:drawableLeft="@drawable/ic_logout"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center_horizontal"
+        android:paddingStart="100dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="@string/button_logout"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:iconPadding="-80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
+        tools:layout_editor_absoluteX="90dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,5 @@
     <color name="grey">#D3D3D3</color>
     <color name="grey_secondary">#EBEBEB</color>
     <color name="screen_background">#F6FAFF</color>
+    <color name="danger">#D30019</color>
 </resources>

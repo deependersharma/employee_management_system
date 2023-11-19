@@ -56,7 +56,7 @@
             android:layout_marginTop="40dp"
             android:layout_alignStart="@id/editTextTextEmailAddress"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/Employee_email"
+            android:text="@string/Employee_name"
             android:textColor="#171F4C"
             android:textSize="20sp"
             android:textStyle="bold" />

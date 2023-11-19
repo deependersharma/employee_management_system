@@ -6,8 +6,9 @@
     <string name="HomePage_image_description">Employee Image Icon</string>
 
     <string name="Employee_login_title">Employee Login</string>
-    <string name="Employee_email">Employee Email</string>
+    <string name="Employee_name">Employee Name</string>
     <string name="Employee_access_Token">Access Token</string>
+    <string name="text_hours_worked">Hours Worked</string>
 
     <string name="Login_btn">Login</string>
 
@@ -18,17 +19,30 @@
     <string name="button_add_employee">Add\nEmployee</string>
     <string name="button_edit_employee">Edit\nEmployee</string>
     <string name="button_delete_employee">Delete\nEmployee</string>
+    <string name="button_logout">Logout</string>
     <string name="button_send_a_message">Send a\nmessage</string>
     <string name="button_employee_lookup">Employee\nLookup</string>
     <string name="button_assign_videos">Assign\nTraining\nVideos</string>
     <string name="button_generate_payslips">Generate\nPayslips</string>
     <string name="button_submit">Submit</string>
     <string name="button_update_employee">Update Employee</string>
+    <string name="button_clock_in">Clock In</string>
+    <string name="button_clock_out">Clock Out</string>
+    <string name="button_break_start">Break Start</string>
+    <string name="button_break_end">Break End</string>
 
     <string name="menu_heading_1">Manage Employee</string>
     <string name="menu_heading_2">Quick Actions</string>
     <string name="menu_heading_3">Reports</string>
     <string name="heading_select_employee">Select an Employee</string>
+    <string name="heading_welcome_back">Welcome Back</string>
+    <string name="heading_current_status">Current Status</string>
+    <string name="heading_quick_actions">Quick Actions</string>
+
+    <string name="subheading_clock_in">Clock In</string>
+    <string name="subheading_clock_out">Clock Out</string>
+    <string name="subheading_break_start">Break Start</string>
+    <string name="subheading_break_end">Break End</string>
 
     <string name="page_title_add_employee">Add an Employee</string>
     <string name="page_title_edit_employee">Edit an Employee</string>

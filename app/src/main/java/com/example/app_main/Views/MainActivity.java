@@ -42,19 +42,19 @@ String temp1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnClockIn = findViewById(R.id.btnClockIn);
-        btnClockOut = findViewById(R.id.btnClockOut);
-        btnTakeBreak = findViewById(R.id.btnTakeBreak);
-        btnResumeWork = findViewById(R.id.btnResumeWork);
-        btnlogout = findViewById(R.id.logout_btn);
+        btnClockIn = findViewById(R.id.btn_clock_in);
+        btnClockOut = findViewById(R.id.btn_clock_out);
+        btnTakeBreak = findViewById(R.id.btn_break_start);
+        btnResumeWork = findViewById(R.id.btn_break_end);
+        btnlogout = findViewById(R.id.btn_employee_logout);
 
-        tvStatus = findViewById(R.id.textView);
-        tvClockInTime = findViewById(R.id.clockin);
-        tvBreakInTime = findViewById(R.id.breakin);
-        tvBreakOutTime = findViewById(R.id.breakout);
-        tvClockOutTime = findViewById(R.id.clockout);
-        tvTotalHours = findViewById(R.id.textView2);
-        user= findViewById(R.id.userId);
+        tvClockInTime = findViewById(R.id.text_clock_in_editable);
+        tvBreakInTime = findViewById(R.id.text_break_start_editable);
+        tvBreakOutTime = findViewById(R.id.text_break_end_editable);
+        tvClockOutTime = findViewById(R.id.text_clock_out_editable);
+        tvTotalHours = findViewById(R.id.text_total_hours);
+        user= findViewById(R.id.employee_name);
+        tvStatus = findViewById(R.id.text_current_status_editable);
 
         dbHelper = new DB_helper(this);
         preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -67,14 +67,14 @@ String temp1;
         isbreakended_prep= preferences.getBoolean("isbreakended", false);
         isclockout_prep= preferences.getBoolean("isclockout", false);
 
-        if(isLoggedIn == true){
-
-            user.setText("hello "+retrievedValue);
+        if(isLoggedIn){
+            retrievedValue = retrievedValue.substring(0, 1).toUpperCase() + retrievedValue.substring(1).toLowerCase();
+            user.setText(retrievedValue);
         }
         else {
-            user.setText("hello " + temp1);
+            user.setText(temp1);
             editor.putBoolean("isLoggedIn", true);
-            editor.commit();
+            editor.apply();
 
         }
         btnClockIn.setOnClickListener(new View.OnClickListener() {
@@ -137,10 +137,10 @@ String temp1;
                             editor.commit();
 
                         } else if(isBreaktaken) {
-                            Toast.makeText(MainActivity.this, "please end your break", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Please end your break", Toast.LENGTH_SHORT).show();
                         }
                         else
-                            Toast.makeText(MainActivity.this, "please clock in first", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Please clock in first", Toast.LENGTH_SHORT).show();
                     }
                 });
         if(isclockout_prep)
@@ -236,11 +236,12 @@ String temp1;
 
 
     private void updateStatus(){
-        String status = "Status: ";
+        String status = "Currently: ";
         if (isClockedIn) {
             status += "Clocked In";
             if (isOnBreak) {
-                status += " (On Break)";
+                status = " ";
+                status = "Currently: On Break";
             }
         } else {
             status += "Not Clocked In";
@@ -314,7 +315,7 @@ String temp1;
                     long minutes = (totalWorkTimeMillisAfterBreaks / (1000 * 60)) % 60;
 
                     totalHours = String.format("%02d:%02d", hours, minutes);
-                    tvTotalHours.setText("Total hours: " + totalHours);
+                    tvTotalHours.setText(totalHours);
                 } catch (ParseException e) {
                     e.printStackTrace();
                     // Handle the ParseException (log or show an error message)

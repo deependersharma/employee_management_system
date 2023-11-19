@@ -21,6 +21,8 @@ import com.example.app_main.Database.Login_DB_helper;
 import com.example.app_main.Views.Manager_menu;
 import com.example.app_main.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,16 +54,26 @@ public class delete_RV_adapter extends RecyclerView.Adapter<delete_RV_adapter.Vi
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(model1.getImage(), 0, model1.getImage().length);
         holder.imageView.setImageBitmap(bitmap);
-        System.out.println(model1.getEmployeeName());
-        System.out.println("my name is :");
+
+
         // below line is to add on click listener for our recycler view item.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setMessage("Do u want to Delete image?")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                View dialogView = LayoutInflater.from(context).inflate(R.layout.employee_info_dialog, null);
+                TextView nameTextView = dialogView.findViewById(R.id.dialog_textView);
+                TextView employeeIDTextView = dialogView.findViewById(R.id.dialog_textView_employeeId);
+                TextView employeeRoleTextView = dialogView.findViewById(R.id.dialog_textView_role);
+                nameTextView.setText("Employee Name: " + model1.getEmployeeName());
+                employeeIDTextView.setText("Employee ID: " +model1.getEmployeeId());
+                employeeRoleTextView.setText("Employee Role: " +model1.getEmployeeRole());
+
+
+                builder.setView(dialogView);
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Remove the item from the dataset
                                 model.remove(position);
@@ -69,7 +81,7 @@ public class delete_RV_adapter extends RecyclerView.Adapter<delete_RV_adapter.Vi
                                 // Notify the adapter that the dataset has changed
                                 notifyItemRemoved(position);
                                 dbHelper.deleteEmployee(model1.getEmployeeId());
-                                Toast.makeText(v.getContext(), "Image deleted", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), "Employee Deleted", Toast.LENGTH_SHORT).show();
                                 if(getItemCount()==0)
                                 {
                                     Intent i=new Intent(v.getContext(), Manager_menu.class);
@@ -91,6 +103,8 @@ public class delete_RV_adapter extends RecyclerView.Adapter<delete_RV_adapter.Vi
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
