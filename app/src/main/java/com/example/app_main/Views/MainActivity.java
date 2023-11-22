@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DB_helper dbHelper;
     private Button btnClockIn, btnClockOut, btnTakeBreak, btnResumeWork, btnlogout;
+    ImageView btn_message;
     private TextView user, tvStatus, tvClockInTime, tvBreakInTime, tvBreakOutTime, tvTotalHours ,tvClockOutTime;
     private Date clockInTime=null, clockOutTime=null, breakInTime=null, breakOutTime=null;
     String totalHours="";
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long i;
     SharedPreferences preferences;
-String temp1;
+String temp1, temp2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ String temp1;
         btnTakeBreak = findViewById(R.id.btn_break_start);
         btnResumeWork = findViewById(R.id.btn_break_end);
         btnlogout = findViewById(R.id.btn_employee_logout);
+        btn_message=findViewById(R.id.imageView);
 
         tvClockInTime = findViewById(R.id.text_clock_in_editable);
         tvBreakInTime = findViewById(R.id.text_break_start_editable);
@@ -62,10 +65,12 @@ String temp1;
         String retrievedValue = preferences.getString("stringValueKey", "DefaultFallbackValue");
         boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
         temp1 = getIntent().getStringExtra("employeeIdentifier");
+        temp2= getIntent().getStringExtra("emailId");
         isClockedIn_prep= preferences.getBoolean("isclockin", false);
         isOnBreak_prep= preferences.getBoolean("isbreakon",false);
         isbreakended_prep= preferences.getBoolean("isbreakended", false);
         isclockout_prep= preferences.getBoolean("isclockout", false);
+        String retrievedValue2 = preferences.getString("stringValueKey1", "DefaultFallbackValue");
 
         if(isLoggedIn){
             retrievedValue = retrievedValue.substring(0, 1).toUpperCase() + retrievedValue.substring(1).toLowerCase();
@@ -89,7 +94,7 @@ String temp1;
                 btnClockIn.getBackground().setAlpha(126);
                 btnClockOut.setVisibility(View.VISIBLE);
                 btnTakeBreak.setVisibility(View.VISIBLE);
-                i = dbHelper.insertWorkTime(clockInTime, clockOutTime, breakInTime, breakOutTime, totalHours, temp1);
+                i = dbHelper.insertWorkTime(clockInTime, temp1,retrievedValue2);
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                 String formattedTime = sdf.format(clockInTime);
                 editor.putString("clock_in_time_key", formattedTime.toString());
@@ -230,7 +235,23 @@ String temp1;
                             logout();
                         }
                     });
+      btn_message.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              if(temp2==null){
+                  temp2= retrievedValue2;
+                  Intent i=new Intent(MainActivity.this, main_message.class);
+                  Toast.makeText(getApplicationContext(),"hello "+ temp2,Toast.LENGTH_SHORT).show();
+                  i.putExtra("employeeIdentifier",temp2);
+                  startActivity(i);
+              }
+              Intent i=new Intent(MainActivity.this, main_message.class);
+              Toast.makeText(getApplicationContext(),"hello "+ temp2,Toast.LENGTH_SHORT).show();
+              i.putExtra("employeeIdentifier",temp2);
+              startActivity(i);
 
+          }
+      });
 
         }
 

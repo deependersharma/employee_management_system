@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Send_message"
-    android:background="@color/screen_background">
+    android:background="@color/screen_background"
+    tools:context=".Views.Send_message">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -33,6 +33,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="18dp"
+            android:layout_marginStart="25dp"
             android:fontFamily="@font/montserrat_semibold"
             android:text="@string/heading_select_employee"
             android:textSize="20sp"
@@ -52,8 +54,8 @@
 
         <Spinner
             android:id="@+id/employee_select_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="41dp"
             android:layout_below="@id/text_select_employee"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
@@ -65,6 +67,27 @@
 
     </RelativeLayout>
 
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="309dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout6" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="80dp"
+        android:text="Send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

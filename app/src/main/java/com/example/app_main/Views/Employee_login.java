@@ -39,10 +39,12 @@ public class Employee_login extends AppCompatActivity {
                     SharedPreferences.Editor editor = preferences.edit();
 
                     editor.putString("stringValueKey", emailId);
+                    editor.putString("stringValueKey1", password);
                     editor.apply();
                     Toast.makeText(getApplicationContext(), "login successful",Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(Employee_login.this, MainActivity.class);
                     i.putExtra("employeeIdentifier",emailId);
+                    i.putExtra("emailId", password);
                     startActivity(i);
                     finish();
                 }

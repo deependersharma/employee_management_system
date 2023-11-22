@@ -14,32 +14,49 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/bottom_border"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/text_welcome_back"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/heading_welcome_back"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="38dp" />
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_welcome_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/heading_welcome_back"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="38dp" />
 
-        <TextView
-            android:id="@+id/employee_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="TextView"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="38dp" />
+            <TextView
+                android:id="@+id/employee_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="TextView"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="38dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/email" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 
@@ -112,10 +129,10 @@
                     android:text="@string/subheading_clock_in" />
 
                 <TextView
-                    android:id="@id/text_clock_in_editable"
+                    android:id="@+id/text_clock_in_editable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/text_clock_in"
+                    android:layout_below="@+id/text_clock_in"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat"
@@ -147,10 +164,10 @@
                     android:text="@string/subheading_clock_out" />
 
                 <TextView
-                    android:id="@id/text_clock_out_editable"
+                    android:id="@+id/text_clock_out_editable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/text_clock_out"
+                    android:layout_below="@+id/text_clock_out"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat"
@@ -172,7 +189,7 @@
                     android:src="@drawable/ic_break" />
 
                 <TextView
-                    android:id="@id/text_break_start"
+                    android:id="@+id/text_break_start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image_break_start"
@@ -182,7 +199,7 @@
                     android:text="@string/subheading_break_start" />
 
                 <TextView
-                    android:id="@id/text_break_start_editable"
+                    android:id="@+id/text_break_start_editable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_break_start"
@@ -207,7 +224,7 @@
                     android:src="@drawable/ic_break" />
 
                 <TextView
-                    android:id="@id/text_break_end"
+                    android:id="@+id/text_break_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image_break_end"
@@ -217,7 +234,7 @@
                     android:text="@string/subheading_break_end" />
 
                 <TextView
-                    android:id="@id/text_break_end_editable"
+                    android:id="@+id/text_break_end_editable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_break_end"

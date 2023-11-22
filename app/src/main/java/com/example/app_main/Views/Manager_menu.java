@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.app_main.R;
@@ -19,8 +21,9 @@ import java.util.Date;
 
 public class Manager_menu extends AppCompatActivity {
     private TextView greet;
-    private ImageButton addEmployee, editEmployee, deleteEmployee;
+    private ImageButton addEmployee, editEmployee, deleteEmployee, sendMessage;
     private TextView timeDate;
+    ImageView btn_employee_lookup;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -33,6 +36,8 @@ public class Manager_menu extends AppCompatActivity {
         addEmployee = findViewById(R.id.add_employee);
         editEmployee = findViewById(R.id.edit_employee);
         deleteEmployee = findViewById(R.id.delete_employee);
+        sendMessage= findViewById(R.id.btn_send_message);
+        btn_employee_lookup= findViewById(R.id.btn_employee_lookup);
 
         updateTimeAndGreeting();
 
@@ -56,6 +61,20 @@ public class Manager_menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Manager_menu.this, Delete_employee.class);
+                startActivity(i);
+            }
+        });
+        sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Manager_menu.this, Send_message.class);
+                startActivity(i);
+            }
+        });
+        btn_employee_lookup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Manager_menu.this, employee_lookup.class);
                 startActivity(i);
             }
         });
