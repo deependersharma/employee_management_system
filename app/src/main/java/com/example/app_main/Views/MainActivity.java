@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isClockedIn_prep, isOnBreak_prep, isbreakended_prep,isclockout_prep;
 
-    private long i;
+    private long i, retrievedValue_id;
     SharedPreferences preferences;
 String temp1, temp2;
 
@@ -70,11 +70,17 @@ String temp1, temp2;
         isOnBreak_prep= preferences.getBoolean("isbreakon",false);
         isbreakended_prep= preferences.getBoolean("isbreakended", false);
         isclockout_prep= preferences.getBoolean("isclockout", false);
+
         String retrievedValue2 = preferences.getString("stringValueKey1", "DefaultFallbackValue");
 
         if(isLoggedIn){
             retrievedValue = retrievedValue.substring(0, 1).toUpperCase() + retrievedValue.substring(1).toLowerCase();
             user.setText(retrievedValue);
+            isClockedIn = preferences.getBoolean("isclockin", false);
+            isOnBreak = preferences.getBoolean("isbreakon", false);
+            retrievedValue_id = preferences.getLong("id", 0L);
+            i=retrievedValue_id;
+
         }
         else {
             user.setText(temp1);
@@ -98,6 +104,8 @@ String temp1, temp2;
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                 String formattedTime = sdf.format(clockInTime);
                 editor.putString("clock_in_time_key", formattedTime.toString());
+                editor.putLong("id",i);
+
                 editor.putBoolean("isclockin", true);
                 editor.commit();
 
@@ -184,7 +192,7 @@ String temp1, temp2;
                 {
                     String retrieved_clock_in = preferences.getString("break_in_time_key", "DefaultFallbackValue1");
                     tvBreakInTime.setText(retrieved_clock_in);
-                    isOnBreak = false;
+                    isOnBreak = true;
                     isBreaktaken= true;
                     btnTakeBreak.setClickable(false);
                     btnTakeBreak.getBackground().setAlpha(126);
@@ -354,22 +362,25 @@ String temp1, temp2;
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Logout Confirmation")
-                .setMessage("Are you sure you want to logout?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Perform logout or any other action here
-
-                            logout();
-
-
-                            }
-
-
-                })
-                .setNegativeButton(android.R.string.no, null)
-                .show();
+//        new AlertDialog.Builder(this)
+//                .setTitle("Logout Confirmation")
+//                .setMessage("Are you sure you want to logout?")
+//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // Perform logout or any other action here
+//
+//                            logout();
+//
+//
+//                            }
+//
+//
+//                })
+//                .setNegativeButton(android.R.string.no, null)
+//                .show();
+        Intent i = new Intent(MainActivity.this, Homepage.class);
+        startActivity(i);
+        finish();
 
         }
     private void logout() {
@@ -377,6 +388,19 @@ String temp1, temp2;
         isClockedIn_prep = preferences.getBoolean("isclockin", false);
         isclockout_prep = preferences.getBoolean("isclockout", false);
         if (isClockedIn_prep && isclockout_prep) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("isLoggedIn", false);
+            editor.putBoolean("isclockin", false);
+            editor.putBoolean("isbreakon", false);
+            editor.putBoolean("isclockout", false);
+            editor.putBoolean("isbreakended", false);
+            editor.apply();
+            Intent i = new Intent(MainActivity.this, Homepage.class);
+            startActivity(i);
+            finish();
+        }
+        if(!isClockedIn)
+        {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean("isLoggedIn", false);
             editor.putBoolean("isclockin", false);

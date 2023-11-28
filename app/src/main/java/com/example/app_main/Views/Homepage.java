@@ -28,16 +28,7 @@ public class Homepage extends AppCompatActivity {
         db= new Manager_DB_helper(this);
 
         //shared preference
-        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
-
-        if (isLoggedIn) {
-            // Navigate to the dashboard
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-
-        }// Optional: Finish the current activity to prevent going back
+        // Optional: Finish the current activity to prevent going back
 //        } else {
 //            // Show the login screen
 //            Intent intent = new Intent(this, .class);

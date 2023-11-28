@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.app_main.Database.Message_DB;
@@ -32,8 +35,36 @@ Message_DB messageDb;
             // Initialize your messages list with some sample data
             messages = new ArrayList<>();
             messages= messageDb.readMessagesByUserId(temp1);
+
+            if(messages.size()==0){
+                showAlertDialog();
+            }
             // Create an instance of the MessageAdapter and set it to the RecyclerView
             messageAdapter = new main_message_adapter(messages);
             recyclerView.setAdapter(messageAdapter);
         }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(main_message.this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("No message found")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent i=new Intent(main_message.this, MainActivity.class);
+                        startActivity(i);
+                        finish();
+                        dialog.dismiss();
+                    }
+                });
+
+        // Create the AlertDialog object and show it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+}
 }

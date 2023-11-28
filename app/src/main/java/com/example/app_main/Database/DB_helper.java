@@ -32,7 +32,7 @@ private SQLiteDatabase database;
 
     public DB_helper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-       database = this.getWritableDatabase();
+        database= getWritableDatabase();
     }
 
     @Override
@@ -121,7 +121,7 @@ private SQLiteDatabase database;
         ArrayList<Employee> employeesWithClockInValues = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT user_id, user_name FROM WorkTime WHERE clock_in_time IS NOT NULL AND clock_in_time != '' AND clock_out_time IS NULL", null);
+        Cursor cursor = db.rawQuery("SELECT user_id, user_name FROM WorkTime WHERE clock_in_time IS NOT NULL AND clock_in_time != '' AND clock_out_time IS NULL OR clock_out_time=''", null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -143,7 +143,7 @@ private SQLiteDatabase database;
         ArrayList<Employee> employeesOnBreak = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT user_id, user_name FROM WorkTime WHERE break_in_time IS NOT NULL AND break_out_time IS NULL", null);
+        Cursor cursor = db.rawQuery("SELECT user_id, user_name FROM WorkTime WHERE break_in_time IS NOT NULL AND break_in_time !='' AND break_out_time IS NULL", null);
 
         if (cursor.moveToFirst()) {
             do {

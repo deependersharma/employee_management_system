@@ -26,6 +26,16 @@ public class Employee_login extends AppCompatActivity {
         pass= findViewById(R.id.editTextTextPassword);
         login= findViewById(R.id.employee_login);
         dbHelper= new Login_DB_helper(this);
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            // Navigate to the dashboard
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
 
 
         login.setOnClickListener(new View.OnClickListener() {
