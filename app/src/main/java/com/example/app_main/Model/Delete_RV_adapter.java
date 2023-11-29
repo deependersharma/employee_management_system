@@ -21,19 +21,17 @@ import com.example.app_main.Database.Login_DB_helper;
 import com.example.app_main.Views.Manager_menu;
 import com.example.app_main.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class delete_RV_adapter extends RecyclerView.Adapter<delete_RV_adapter.ViewHolder> {
+public class Delete_RV_adapter extends RecyclerView.Adapter<Delete_RV_adapter.ViewHolder> {
 
     Context context;
     Login_DB_helper dbHelper;
     private ArrayList<Employees_model> model;
     private List<Bitmap> imageList;
 
-    public delete_RV_adapter(ArrayList<Employees_model> model, Context context)
+    public Delete_RV_adapter(ArrayList<Employees_model> model, Context context)
     {
         this.context=context;
         this.model=model;
@@ -44,7 +42,7 @@ public class delete_RV_adapter extends RecyclerView.Adapter<delete_RV_adapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.edit_employee_items,parent,false);
-        return  new delete_RV_adapter.ViewHolder(v);
+        return  new Delete_RV_adapter.ViewHolder(v);
     }
 
     @Override

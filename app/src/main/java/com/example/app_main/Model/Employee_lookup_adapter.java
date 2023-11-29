@@ -13,14 +13,13 @@ import com.example.app_main.Database.Employee;
 import com.example.app_main.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class EmployeeLookupAdapter extends RecyclerView.Adapter<EmployeeLookupAdapter.EmployeeViewHolder> {
+public class Employee_lookup_adapter extends RecyclerView.Adapter<Employee_lookup_adapter.EmployeeViewHolder> {
 
     private ArrayList<Employee> employees;
     Context context;
 
-    public EmployeeLookupAdapter(ArrayList<Employee> employees, Context context) {
+    public Employee_lookup_adapter(ArrayList<Employee> employees, Context context) {
         this.employees = employees;
         this.context= context;
     }

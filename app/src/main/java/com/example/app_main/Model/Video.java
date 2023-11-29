@@ -1,12 +1,12 @@
 package com.example.app_main.Model;
 
-public class Message {
+public class Video {
     private int id;
     private String userId;
     private String messageText;
 
     // Constructor with parameters
-    public Message(int id, String userId, String messageText) {
+    public Video(int id, String userId, String messageText) {
         this.id = id;
         this.userId = userId;
         this.messageText = messageText;

@@ -9,7 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.app_main.Model.main_message_adapter;
+import com.example.app_main.Database.Video_DB;
+import com.example.app_main.Model.Main_message_adapter;
 import com.example.app_main.Model.Message;
 import com.example.app_main.R;
 
@@ -18,10 +19,10 @@ import java.util.List;
 
 public class Get_assigned_videos extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private main_message_adapter messageAdapter;
+    private Main_message_adapter messageAdapter;
     private List<Message> messages;
     String temp1;
-    Video_link_DB videoLinkDB;
+    Video_DB messageDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +31,17 @@ public class Get_assigned_videos extends AppCompatActivity {
         // Assuming you have a RecyclerView with the id "recyclerView" in your activity_main.xml
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        videoLinkDB = new Video_link_DB(this);
+
+        messageDb=new Video_DB(this);
         // Initialize your messages list with some sample data
         messages = new ArrayList<>();
-        messages= videoLinkDB.readMessagesByUserId(temp1);
+        messages= messageDb.readMessagesByUserId(temp1);
 
         if(messages.size()==0){
             showAlertDialog();
         }
         // Create an instance of the MessageAdapter and set it to the RecyclerView
-        messageAdapter = new main_message_adapter(messages);
+        messageAdapter = new Main_message_adapter(messages);
         recyclerView.setAdapter(messageAdapter);
     }
 

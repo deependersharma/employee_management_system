@@ -10,16 +10,16 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.app_main.Database.Message_DB;
-import com.example.app_main.Model.main_message_adapter;
+import com.example.app_main.Model.Main_message_adapter;
 import com.example.app_main.Model.Message;
 import com.example.app_main.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class main_message extends AppCompatActivity {
+public class Main_message extends AppCompatActivity {
     private RecyclerView recyclerView;
-        private main_message_adapter messageAdapter;
+        private Main_message_adapter messageAdapter;
         private List<Message> messages;
         String temp1;
 Message_DB messageDb;
@@ -40,14 +40,14 @@ Message_DB messageDb;
                 showAlertDialog();
             }
             // Create an instance of the MessageAdapter and set it to the RecyclerView
-            messageAdapter = new main_message_adapter(messages);
+            messageAdapter = new Main_message_adapter(messages);
             recyclerView.setAdapter(messageAdapter);
         }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(main_message.this, MainActivity.class);
+        Intent i=new Intent(Main_message.this, MainActivity.class);
         startActivity(i);
         finish();
     }
@@ -56,7 +56,7 @@ Message_DB messageDb;
         builder.setMessage("No message found")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent i=new Intent(main_message.this, MainActivity.class);
+                        Intent i=new Intent(Main_message.this, MainActivity.class);
                         startActivity(i);
                         finish();
                         dialog.dismiss();

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.app_main.R;
@@ -76,7 +75,7 @@ public class Manager_menu extends AppCompatActivity {
         btn_employee_lookup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Manager_menu.this, employee_lookup.class);
+                Intent i = new Intent(Manager_menu.this, Employee_lookup.class);
                 startActivity(i);
             }
         });

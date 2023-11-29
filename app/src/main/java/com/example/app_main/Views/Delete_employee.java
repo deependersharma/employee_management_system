@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.app_main.Database.Login_DB_helper;
 import com.example.app_main.Model.Employees_model;
-import com.example.app_main.Model.delete_RV_adapter;
+import com.example.app_main.Model.Delete_RV_adapter;
 import com.example.app_main.R;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class Delete_employee extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Employees_model> model;
     private List<Bitmap> imageList;
-    private delete_RV_adapter deleteRVAdapter;
+    private Delete_RV_adapter deleteRVAdapter;
     private Login_DB_helper dbHelper;
 
     @Override
@@ -32,7 +32,7 @@ public class Delete_employee extends AppCompatActivity {
         model= new ArrayList<>();
         dbHelper= new Login_DB_helper(Delete_employee.this);
         model= dbHelper.readData();
-        deleteRVAdapter = new delete_RV_adapter(model, Delete_employee.this);
+        deleteRVAdapter = new Delete_RV_adapter(model, Delete_employee.this);
         // setting our adapter to recycler view.
         recyclerView.setAdapter(deleteRVAdapter);
 

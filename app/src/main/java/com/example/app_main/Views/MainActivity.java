@@ -2,8 +2,6 @@ package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -251,12 +249,12 @@ String temp1, temp2;
           public void onClick(View view) {
               if(temp2==null){
                   temp2= retrievedValue2;
-                  Intent i=new Intent(MainActivity.this, main_message.class);
+                  Intent i=new Intent(MainActivity.this, Main_message.class);
                   Toast.makeText(getApplicationContext(),"hello "+ temp2,Toast.LENGTH_SHORT).show();
                   i.putExtra("employeeIdentifier",temp2);
                   startActivity(i);
               }
-              Intent i=new Intent(MainActivity.this, main_message.class);
+              Intent i=new Intent(MainActivity.this, Main_message.class);
               Toast.makeText(getApplicationContext(),"hello "+ temp2,Toast.LENGTH_SHORT).show();
               i.putExtra("employeeIdentifier",temp2);
               startActivity(i);

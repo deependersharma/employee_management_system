@@ -12,11 +12,11 @@ import com.example.app_main.R;
 
 import java.util.List;
 
-public class main_message_adapter extends RecyclerView.Adapter<main_message_adapter.MessageViewHolder> {
+public class Main_message_adapter extends RecyclerView.Adapter<Main_message_adapter.MessageViewHolder> {
 
     private List<Message> messages;
 
-    public main_message_adapter(List<Message> messages) {
+    public Main_message_adapter(List<Message> messages) {
         this.messages = messages;
     }
 

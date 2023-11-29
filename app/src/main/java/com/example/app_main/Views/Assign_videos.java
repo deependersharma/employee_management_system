@@ -1,9 +1,11 @@
+
 package com.example.app_main.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.app_main.Database.Login_DB_helper;
+import com.example.app_main.Database.Message_DB;
+import com.example.app_main.Database.Video_DB;
 import com.example.app_main.Model.Employees_model;
 import com.example.app_main.R;
 
@@ -20,14 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Assign_videos extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Spinner spinner;
     EditText message;
     private Login_DB_helper dbHelper;
-    private Video_link_DB videoLinkDB;
+    private Video_DB videoDB;
     List<String> employeeNames,employeeId;
     private ArrayList<Employees_model> model;
     Button send_btn;
 
+    Spinner spinner;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assign_videos);
@@ -40,7 +45,7 @@ public class Assign_videos extends AppCompatActivity implements AdapterView.OnIt
         employeeId = new ArrayList<>();
 
         dbHelper= new Login_DB_helper(this);
-        videoLinkDB=new Video_link_DB(this);
+        videoDB=new Video_DB(this);
         model= dbHelper.readData();
 
 
@@ -53,7 +58,6 @@ public class Assign_videos extends AppCompatActivity implements AdapterView.OnIt
         // Take the instance of Spinner and
         // apply OnItemSelectedListener on it which
         // tells which item of spinner is clicked
-
         spinner.setOnItemSelectedListener(this);
 
         // Create the instance of ArrayAdapter
@@ -80,7 +84,7 @@ public class Assign_videos extends AppCompatActivity implements AdapterView.OnIt
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                videoLinkDB.Insert(employeeId.get(position).toString(), message.getText().toString());
+                videoDB.Insert(employeeId.get(position).toString(), message.getText().toString());
                 Toast.makeText(getApplicationContext(),
                                 employeeNames.get(position)+" "+ employeeId.get(position),
                                 Toast.LENGTH_LONG)
