@@ -12,14 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Views.Get_assigned_videos"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".Views.Generate_reports"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".Views.Assign_videos"
+            android:exported="false"
+            />
         <activity
             android:name=".Views.employee_lookup"
             android:exported="false" />
         <activity
             android:name=".Views.main_message"
-            android:exported="false" />
-        <activity
-            android:name=".Views.Employees_lookup"
             android:exported="false" />
         <activity
             android:name=".Views.Send_message"

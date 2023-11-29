@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_background"
-    tools:context=".Views.Send_message">
+    tools:context=".Views.employee_lookup">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -27,7 +27,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="18dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="@string/page_title_send_message"
+            android:text="@string/page_title_assign_video"
             android:textSize="34sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -52,13 +52,13 @@
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/employee_select_spinner"
+            android:id="@+id/assign_videos_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
             android:layout_below="@id/text_select_employee"
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_bg_spinner"
-            android:paddingVertical="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             app:cornerRadius="10dp" />
@@ -66,14 +66,14 @@
     </RelativeLayout>
 
     <EditText
-        android:id="@+id/editText_send_message"
+        android:id="@+id/editText_video_link"
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/shape_bg_white"
-        android:elevation="5dp"
+        android:elevation="2dp"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout6" />
 
     <Button
-        android:id="@+id/btn_send_message"
+        android:id="@+id/btn_assign_videos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -95,12 +95,14 @@
         android:paddingStart="40dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:text="@string/button_send_message"
+        android:text="@string/button_assign_video"
         android:textSize="24sp"
         app:cornerRadius="10dp"
         app:iconPadding="-20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_send_message" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_video_link" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

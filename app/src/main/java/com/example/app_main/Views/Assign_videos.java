@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,35 +13,34 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.app_main.Database.Login_DB_helper;
-import com.example.app_main.Database.Message_DB;
 import com.example.app_main.Model.Employees_model;
 import com.example.app_main.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Send_message extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Spinner spino;
+public class Assign_videos extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Spinner spinner;
     EditText message;
     private Login_DB_helper dbHelper;
-    private Message_DB messageDb;
+    private Video_link_DB videoLinkDB;
     List<String> employeeNames,employeeId;
     private ArrayList<Employees_model> model;
     Button send_btn;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_message);
-        message= findViewById(R.id.editText_send_message);
-        send_btn= findViewById(R.id.btn_send_message);
+        setContentView(R.layout.activity_assign_videos);
+        message= findViewById(R.id.editText_video_link);
+        send_btn= findViewById(R.id.btn_assign_videos);
+        spinner = findViewById(R.id.assign_videos_spinner);
 
         model= new ArrayList<>();
         employeeNames = new ArrayList<>();
         employeeId = new ArrayList<>();
 
         dbHelper= new Login_DB_helper(this);
-        messageDb=new Message_DB(this);
+        videoLinkDB=new Video_link_DB(this);
         model= dbHelper.readData();
 
 
@@ -55,8 +53,8 @@ public class Send_message extends AppCompatActivity implements AdapterView.OnIte
         // Take the instance of Spinner and
         // apply OnItemSelectedListener on it which
         // tells which item of spinner is clicked
-        spino = (Spinner) findViewById(R.id.employee_select_spinner);
-        spino.setOnItemSelectedListener(this);
+
+        spinner.setOnItemSelectedListener(this);
 
         // Create the instance of ArrayAdapter
         // having the list of courses
@@ -74,7 +72,7 @@ public class Send_message extends AppCompatActivity implements AdapterView.OnIte
 
         // Set the ArrayAdapter (ad) data on the
         // Spinner which binds data to spinner
-        spino.setAdapter(ad);
+        spinner.setAdapter(ad);
     }
 
     @Override
@@ -82,12 +80,12 @@ public class Send_message extends AppCompatActivity implements AdapterView.OnIte
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                messageDb.Insert(employeeId.get(position).toString(), message.getText().toString());
+                videoLinkDB.Insert(employeeId.get(position).toString(), message.getText().toString());
                 Toast.makeText(getApplicationContext(),
                                 employeeNames.get(position)+" "+ employeeId.get(position),
                                 Toast.LENGTH_LONG)
                         .show();
-                Intent i = new Intent(Send_message.this, Manager_menu.class);
+                Intent i = new Intent(Assign_videos.this, Manager_menu.class);
                 startActivity(i);
                 finish();
             }

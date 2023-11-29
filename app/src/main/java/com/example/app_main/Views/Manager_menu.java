@@ -21,7 +21,7 @@ import java.util.Date;
 
 public class Manager_menu extends AppCompatActivity {
     private TextView greet;
-    private ImageButton addEmployee, editEmployee, deleteEmployee, sendMessage;
+    private ImageButton addEmployee, editEmployee, deleteEmployee, sendMessage, btn_assign_videos, btn_reports;
     private TextView timeDate;
     ImageView btn_employee_lookup;
 
@@ -38,6 +38,8 @@ public class Manager_menu extends AppCompatActivity {
         deleteEmployee = findViewById(R.id.delete_employee);
         sendMessage= findViewById(R.id.btn_send_message);
         btn_employee_lookup= findViewById(R.id.btn_employee_lookup);
+        btn_assign_videos = findViewById(R.id.btn_assign_videos);
+        btn_reports = findViewById(R.id.btn_reports);
 
         updateTimeAndGreeting();
 
@@ -75,6 +77,22 @@ public class Manager_menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Manager_menu.this, employee_lookup.class);
+                startActivity(i);
+            }
+        });
+
+        btn_assign_videos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Manager_menu.this, Assign_videos.class);
+                startActivity(i);
+            }
+        });
+
+        btn_reports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Manager_menu.this, Generate_reports.class);
                 startActivity(i);
             }
         });

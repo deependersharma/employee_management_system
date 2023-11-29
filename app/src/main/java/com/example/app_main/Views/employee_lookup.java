@@ -35,7 +35,7 @@ public class employee_lookup extends AppCompatActivity implements AdapterView.On
     RecyclerView recyclerView;
     // create array of Strings
     // and store the name of courses
-    String[] courses = {"clocked In", "On Break", "clocked Out"};
+    String[] courses = {"Clocked In", "On Break", "Clocked Out"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,6 @@ public class employee_lookup extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
         // Make a toast of the name of the selected employee from the spinner
-        Toast.makeText(getApplicationContext(), courses[position], Toast.LENGTH_LONG).show();
 
         // Use .equals() for string comparison
         if ("clocked In".equals(courses[position])) {
@@ -86,19 +85,16 @@ public class employee_lookup extends AppCompatActivity implements AdapterView.On
             editRVAdapter = new EmployeeLookupAdapter(employeesWithClockInValues, employee_lookup.this);
             // setting our adapter to recycler view.
             recyclerView.setAdapter(editRVAdapter);
-            Toast.makeText(getApplicationContext(), employeesWithClockInValues.toString(), Toast.LENGTH_LONG).show();
         }
         if ("On Break".equals(courses[position])) {
             ArrayList<Employee> employeesOnBreak = dbHelper_main.getEmployeesOnBreak();
             editRVAdapter = new EmployeeLookupAdapter(employeesOnBreak, employee_lookup.this);
             recyclerView.setAdapter(editRVAdapter);
-            Toast.makeText(getApplicationContext(), employeesOnBreak.toString(), Toast.LENGTH_LONG).show();
         }
         if ("clocked Out".equals(courses[position])) {
             ArrayList<Employee> employeesFinishedShift = dbHelper_main.getEmployeesFinishedShift();
             editRVAdapter = new EmployeeLookupAdapter(employeesFinishedShift, employee_lookup.this);
             recyclerView.setAdapter(editRVAdapter);
-            Toast.makeText(getApplicationContext(), employeesFinishedShift.toString(), Toast.LENGTH_LONG).show();
         }
 
 

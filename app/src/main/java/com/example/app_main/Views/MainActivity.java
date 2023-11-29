@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DB_helper dbHelper;
     private Button btnClockIn, btnClockOut, btnTakeBreak, btnResumeWork, btnlogout;
-    ImageView btn_message;
+    ImageView btn_message, btn_video_link;
     private TextView user, tvStatus, tvClockInTime, tvBreakInTime, tvBreakOutTime, tvTotalHours ,tvClockOutTime;
     private Date clockInTime=null, clockOutTime=null, breakInTime=null, breakOutTime=null;
     String totalHours="";
@@ -50,6 +50,7 @@ String temp1, temp2;
         btnResumeWork = findViewById(R.id.btn_break_end);
         btnlogout = findViewById(R.id.btn_employee_logout);
         btn_message=findViewById(R.id.imageView);
+        btn_video_link = findViewById(R.id.video_activity);
 
         tvClockInTime = findViewById(R.id.text_clock_in_editable);
         tvBreakInTime = findViewById(R.id.text_break_start_editable);
@@ -88,6 +89,8 @@ String temp1, temp2;
             editor.apply();
 
         }
+
+
         btnClockIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -261,7 +264,28 @@ String temp1, temp2;
           }
       });
 
-        }
+        btn_video_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (temp2 == null) {
+                    temp2 = retrievedValue2;
+                }
+
+                // Assuming you have the video link stored in a variable named "videoLink"
+                String videoLink = "https://example.com";  // Replace with your logic to get the video link
+
+                Intent i = new Intent(MainActivity.this, Get_assigned_videos.class);
+                i.putExtra("employeeIdentifier", temp2);
+
+                // Pass the video link to the Get_assigned_videos activity
+                i.putExtra("videoLink", videoLink);
+
+                startActivity(i);
+            }
+        });
+
+
+    }
 
 
     private void updateStatus(){

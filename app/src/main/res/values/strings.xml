@@ -21,6 +21,7 @@
     <string name="button_delete_employee">Delete\nEmployee</string>
     <string name="button_logout">Logout</string>
     <string name="button_send_a_message">Send a\nmessage</string>
+    <string name="button_send_message">Send message</string>
     <string name="button_employee_lookup">Employee\nLookup</string>
     <string name="button_assign_videos">Assign\nTraining\nVideos</string>
     <string name="button_generate_payslips">Generate\nPayslips</string>
@@ -30,6 +31,8 @@
     <string name="button_clock_out">Clock Out</string>
     <string name="button_break_start">Break Start</string>
     <string name="button_break_end">Break End</string>
+    <string name="button_assign_video">Assign Video</string>
+    <string name="button_generate_pdf">Generate PDF</string>
 
     <string name="menu_heading_1">Manage Employee</string>
     <string name="menu_heading_2">Quick Actions</string>
@@ -43,11 +46,15 @@
     <string name="subheading_clock_out">Clock Out</string>
     <string name="subheading_break_start">Break Start</string>
     <string name="subheading_break_end">Break End</string>
+    <string name="subheading_filter_actions">Filter Actions</string>
 
     <string name="page_title_add_employee">Add an Employee</string>
     <string name="page_title_edit_employee">Edit an Employee</string>
     <string name="page_title_update_employee">Update an Employee</string>
     <string name="page_title_delete_employee">Delete an Employee</string>
     <string name="page_title_send_message">Send a message</string>
+    <string name="page_title_employee_lookup">Employee Lookup</string>
+    <string name="page_title_assign_video">Assign Training Video</string>
+    <string name="page_title_generate_reports">Generate Reports</string>
 
 </resources>

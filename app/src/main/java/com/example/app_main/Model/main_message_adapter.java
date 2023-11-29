@@ -31,9 +31,7 @@ public class main_message_adapter extends RecyclerView.Adapter<main_message_adap
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         Message message1 = messages.get(position);
 
-        // Set the ID and message to the TextViews
-        holder.textViewId.setText("ID: "+ message1.getId());
-        holder.textViewMessage.setText("Message: "+ message1.getMessageText());
+        holder.textViewMessage.setText(message1.getMessageText());
     }
 
     @Override
@@ -47,7 +45,6 @@ public class main_message_adapter extends RecyclerView.Adapter<main_message_adap
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewId = itemView.findViewById(R.id.textViewId);
             textViewMessage = itemView.findViewById(R.id.textViewMessage);
         }
     }

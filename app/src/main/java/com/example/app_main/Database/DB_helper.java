@@ -184,6 +184,51 @@ private SQLiteDatabase database;
         return employeesFinishedShift;
     }
 
+    public ArrayList<Employee> getAllEmployees() {
+        ArrayList<Employee> allEmployees = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT user_id, user_name FROM " + TABLE_WORKTIME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID));
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME));
+
+                // Create an Employee object with the retrieved data
+                Employee employee = new Employee(id, name);
+                allEmployees.add(employee);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return allEmployees;
+    }
+
+    // Add this method to your DB_helper class
+    public String getTotalHoursForEmployee(String userId) {
+        String totalHours = "";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {COLUMN_TOTAL_HOURS};
+        String selection = COLUMN_USER_ID + "=?";
+        String[] selectionArgs = {userId};
+
+        Cursor cursor = db.query(TABLE_WORKTIME, projection, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            totalHours = cursor.getString(cursor.getColumnIndex(COLUMN_TOTAL_HOURS));
+        }
+
+        cursor.close();
+        db.close();
+
+        return totalHours;
+    }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
